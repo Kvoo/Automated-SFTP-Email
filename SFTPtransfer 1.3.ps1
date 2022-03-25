@@ -62,7 +62,6 @@ if ($SFTPFileList.Length -ne 2){
                     Write-Output "Downloaded File: "
                     Get-Item "$LocalDownloadPath\$FileName" -ErrorAction Stop
                     $LocalFiles = $LocalFiles + $LocalFullPath
-
                 }
                 catch {
                     Send-MailMessage @MailAdmin -Body "SFTP: Error downloading $FileName. Script Stopped. Check Log for further details" -Subject "SVFTP01: SFTP Script Error"
