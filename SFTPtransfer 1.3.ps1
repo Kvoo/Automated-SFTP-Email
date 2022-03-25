@@ -2,8 +2,6 @@
 # Date: 25.03.2022
 # Version: 1.3
 
-
-
 # Start Log
 $VerbosePreference = "Continue"
 $dt = get-date -format dd-MM-yyyy-hh-mm
@@ -17,7 +15,6 @@ $SFTPPort = '20322'
 $SFTPPrivKey = "$PSScriptRoot\privkey.priv"
 $LocalDownloadPath = "$PSScriptRoot\Files\Downloaded"
 $LocalSentPath = "$PSScriptRoot\Files\Sent"
-
 
 $MailAdmin = @{
     to = @("sysadmin@contoso.com")
@@ -113,7 +110,6 @@ if ($SFTPFiles){
         Write-Output "Deleted $File on SFTP Server"
     }
 }
-
 
 # Close SFTP Session
 Disconnect-SFTP -SftpClient $SFTPSession
