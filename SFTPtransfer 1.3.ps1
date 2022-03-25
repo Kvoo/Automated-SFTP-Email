@@ -43,7 +43,7 @@ catch {
 $SFTPFileList = Get-SFTPList -SftpClient $SFTPSession -Path /bzc/juris/out
 Write-Output "Files to download: SFTPFileList"
 
-# Loops through each path except /sftppath/path/path/. and /sftppath/path/path/.. and downloads the files, if there are any
+# If there are any files to download, loops through each path except /sftppath/path/path/. and /sftppath/path/path/.. and downloads the file
 # Then checks if the file is readable
 $LocalFiles = @()
 $SFTPFiles = @()
