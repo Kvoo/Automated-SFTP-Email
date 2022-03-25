@@ -28,7 +28,7 @@ Write-Output "Deleting sent files older than 1 month..."
 $limit = (Get-Date).AddDays(-30)
 Get-ChildItem -Path $LocalSentPath -Recurse -Force -Verbose | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
 
-# Initializes SFTP Session and Create variable containing all file objects, stops script if no files to download
+# Initializes SFTP Session
 try {
     Write-Output "Inintializing SFTP Session"
     $SFTPSession = Connect-SFTP -PrivateKey $SFTPPrivKey -Server $SFTPServer -Username $SFTPUser -Port $SFTPPort -ErrorAction Stop
@@ -39,10 +39,11 @@ catch {
     Exit
 }
 
+# Create variable containing all file objects.
 $SFTPFileList = Get-SFTPList -SftpClient $SFTPSession -Path /bzc/juris/out
 Write-Output "Files to download: SFTPFileList"
 
-# Loops through each path except /sftppath/path/path/. and /sftppath/path/path/.. and downloads the file
+# Loops through each path except /sftppath/path/path/. and /sftppath/path/path/.. and downloads the files, if there are any
 # Then checks if the file is readable
 $LocalFiles = @()
 $SFTPFiles = @()
