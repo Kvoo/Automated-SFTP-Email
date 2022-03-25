@@ -1,4 +1,4 @@
-﻿# Made by: Kevin Dorrer
+﻿# Made by: Kvoo
 # Date: 25.03.2022
 # Version: 1.3
 
